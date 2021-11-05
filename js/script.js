@@ -24,21 +24,23 @@ function getPosts (){
         userPost.forEach(e => {
             postContent +=`
             <div class="col-4 my-3 one-post">
-                <div class="card h-100 ">
-                    <div class="card-body">
-                        <h3 class="text-danger">${e.id}</h3>
-                        <h5 class="update-post-title text-lenght-1">${e.title}</h5>
-                        <p class="update-post-body">
-                            ${e.body}
-                        </p>
-                        <div class="d-flex justify-content-between mb-auto">
-                            <button type="submit" class="btn btn-info" onClick = updatePosts(${e.id})>Update</button>
-                            <button type="submit" class="btn btn-danger" onClick = deletePosts(${e.id})>Delete</button>
-                            
+                <a href="./new-page.html" onClick="showOnePage(${e.id})" class="text-black text-decoration-none">
+                    <div class="card h-100 ">
+                        <div class="card-body">
+                            <h3 class="text-danger">${e.id}</h3>
+                            <h5 class="update-post-title text-lenght-1">${e.title}</h5>
+                            <p class="update-post-body">
+                                ${e.body}
+                            </p>
+                            <div class="d-flex justify-content-between mb-auto">
+                                <button type="submit" class="btn btn-info" onClick = updatePosts(${e.id})>Update</button>
+                                <button type="submit" class="btn btn-danger" onClick = deletePosts(${e.id})>Delete</button>
+                        
 
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
 
             </div>     
         `
@@ -50,6 +52,11 @@ function getPosts (){
 }
 
 getPosts();
+
+
+
+
+
 
 
 
@@ -298,6 +305,17 @@ function deletePosts(postId){
 
 
 }
+
+// To view the one post only on click of the post on the getPosts function
+
+let data = localStorage.setItem('data', JSON.stringify(data));
+
+function showOnePage(clickThis) {
+    
+  localStorage.setItem('ePosts', clickThis)
+}
+
+
 
 
 
